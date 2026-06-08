@@ -1,0 +1,1 @@
+claude mcp add cockroachdb-cloud https://cockroachlabs.cloud/mcp --transport http --header "mcp-cluster-id: 15ad0cb9-5e8d-4191-8026-d8328d0cbdda"
