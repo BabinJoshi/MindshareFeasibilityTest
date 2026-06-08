@@ -23,8 +23,8 @@ import psycopg2.extras
 
 # ── CONFIG — edit these two lines ─────────────────────────────────────────────
 # CRDB_URL = "postgresql://user:password@host.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
-CRDB_URL='cockroachdb+asyncpg://srj:mqxwvIIOybx_n6LKvi-XSQ@nucleus-prod-25259.j77.aws-us-east-2.cockroachlabs.cloud:26257/nucleus-prod?sslmode=require'
-CSV_DIR  = Path(r"C:\Users\jbabi\OneDrive\Desktop\test_mindshare_user.csv")   # folder containing all CSV files
+CRDB_URL='nucleus-prod-25259.j77.aws-us-east-2.cockroachlabs.cloud'
+CSV_DIR  = Path(r"C:\path\to\your\csv\files")   # folder containing all CSV files
 # ─────────────────────────────────────────────────────────────────────────────
 
 BATCH_SIZE = 500   # rows per INSERT ... VALUES (...),(...),...
@@ -230,74 +230,73 @@ TABLES = [
             "created_at", "updated_at", "last_score_fetched_at",
         ],
         row_mindshare_user,
-    )
-    # ,
-    # (
-    #     "nucleus_user.csv",
-    #     "mindshare.nucleus_user",
-    #     [
-    #         "x_id", "x_username", "display_name", "score", "avatar_url",
-    #         "adjustment_config", "followers_count", "verified",
-    #         "created_at", "updated_at",
-    #     ],
-    #     row_nucleus_user,
-    # ),
-    # (
-    #     "mindshare_post.csv",
-    #     "mindshare.mindshare_post",
-    #     [
-    #         "post_id", "project_keyword", "user_x_id", "full_text",
-    #         "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
-    #         "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
-    #         "post_created_at", "created_at", "updated_at",
-    #         "sentiment_score", "sentiment_label", "entities", "content_score", "latest_reply_at",
-    #     ],
-    #     row_mindshare_post,
-    # ),
-    # (
-    #     "nucleus_post.csv",
-    #     "mindshare.nucleus_post",
-    #     [
-    #         "post_id", "project_keyword", "user_x_id", "full_text",
-    #         "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
-    #         "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
-    #         "post_created_at", "sentiment_score", "sentiment_label", "entities", "content_score",
-    #         "created_at", "updated_at", "is_reply_fetched",
-    #     ],
-    #     row_nucleus_post,
-    # ),
-    # (
-    #     "user_post.csv",
-    #     "mindshare.user_post",
-    #     [
-    #         "post_id", "user_x_id", "full_text",
-    #         "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
-    #         "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
-    #         "post_created_at", "created_at", "updated_at", "entities", "project_keyword",
-    #     ],
-    #     row_user_post,
-    # ),
-    # (
-    #     "contribution_scores.csv",
-    #     "mindshare_score.contribution_scores",
-    #     [
-    #         "project_keyword", "reply_post_id", "replier_x_id", "original_post_id",
-    #         "original_author_x_id", "post_created_at", "replier_base_score",
-    #         "effective_score", "contribution_score", "active_multipliers",
-    #         "reply_number", "local_reply_count", "decay_type",
-    #     ],
-    #     row_contribution_scores,
-    # ),
-    # (
-    #     "global_contribution_scores.csv",
-    #     "mindshare_score.global_contribution_scores",
-    #     [
-    #         "reply_post_id", "replier_x_id", "original_post_id", "original_author_x_id",
-    #         "post_created_at", "replier_base_score", "effective_score", "contribution_score",
-    #         "active_multipliers", "reply_number", "local_reply_count", "decay_type",
-    #     ],
-    #     row_global_contribution_scores,
-    # ),
+    ),
+    (
+        "nucleus_user.csv",
+        "mindshare.nucleus_user",
+        [
+            "x_id", "x_username", "display_name", "score", "avatar_url",
+            "adjustment_config", "followers_count", "verified",
+            "created_at", "updated_at",
+        ],
+        row_nucleus_user,
+    ),
+    (
+        "mindshare_post.csv",
+        "mindshare.mindshare_post",
+        [
+            "post_id", "project_keyword", "user_x_id", "full_text",
+            "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
+            "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
+            "post_created_at", "created_at", "updated_at",
+            "sentiment_score", "sentiment_label", "entities", "content_score", "latest_reply_at",
+        ],
+        row_mindshare_post,
+    ),
+    (
+        "nucleus_post.csv",
+        "mindshare.nucleus_post",
+        [
+            "post_id", "project_keyword", "user_x_id", "full_text",
+            "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
+            "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
+            "post_created_at", "sentiment_score", "sentiment_label", "entities", "content_score",
+            "created_at", "updated_at", "is_reply_fetched",
+        ],
+        row_nucleus_post,
+    ),
+    (
+        "user_post.csv",
+        "mindshare.user_post",
+        [
+            "post_id", "user_x_id", "full_text",
+            "retweeted_post_id", "replied_post_id", "quoted_post_id", "root_post_id",
+            "view_count", "reply_count", "retweet_count", "quote_count", "favorite_count",
+            "post_created_at", "created_at", "updated_at", "entities", "project_keyword",
+        ],
+        row_user_post,
+    ),
+    (
+        "contribution_scores.csv",
+        "mindshare_score.contribution_scores",
+        [
+            "project_keyword", "reply_post_id", "replier_x_id", "original_post_id",
+            "original_author_x_id", "post_created_at", "replier_base_score",
+            "effective_score", "contribution_score", "active_multipliers",
+            "reply_number", "local_reply_count", "decay_type",
+        ],
+        row_contribution_scores,
+    ),
+    (
+        "global_contribution_scores.csv",
+        "mindshare_score.global_contribution_scores",
+        [
+            "reply_post_id", "replier_x_id", "original_post_id", "original_author_x_id",
+            "post_created_at", "replier_base_score", "effective_score", "contribution_score",
+            "active_multipliers", "reply_number", "local_reply_count", "decay_type",
+        ],
+        row_global_contribution_scores,
+    ),
 ]
 
 
