@@ -151,6 +151,12 @@
       "skillPath": "skills/cockroachdb-operations-and-lifecycle/performing-cluster-maintenance/SKILL.md",
       "computedHash": "00565c13ea9216612f04acdb4acbca768611a65dd40a46c9c8a79d12226c0df9"
     },
+    "postgres": {
+      "source": "planetscale/database-skills",
+      "sourceType": "github",
+      "skillPath": "skills/postgres/SKILL.md",
+      "computedHash": "2acf9fae4fcdb6c392923708b67234828f8a9f10b10dfa5d228eaab6e9108245"
+    },
     "preparing-compliance-documentation": {
       "source": "cockroachlabs/cockroachdb-skills",
       "sourceType": "github",
